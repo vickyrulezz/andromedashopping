@@ -83,7 +83,10 @@ app.get('/', function (req, res) {
     res.render('index.html', { root : VIEWS });
 });
 
-
+app.get("/getallproducts", function (req, res) {
+    res.sendFile('allproducts.html', { root : VIEWS });
+    searchParam = req.query.txtSearch;
+  });
 
  /* DATABASE operations */
 
