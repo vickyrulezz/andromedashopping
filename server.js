@@ -5,14 +5,14 @@ var mysql = require("mysql");
 const http = require('http');
 var fs = require("fs");
 var path = require('path');
-const VIEWS = path.join(__dirname, 'views');
-const CSS = path.join(__dirname, 'css');
-const JSCRIPT = path.join(__dirname, 'js');
-const FONTS = path.join(__dirname, 'fonts');
-const IMAGES = path.join(__dirname, 'images');
-const PAYMENT_ICON = path.join(__dirname, 'images/payment-icon');
-const PHP = path.join(__dirname, 'php');
-const WEBFONTS = path.join(__dirname, 'webfonts');
+const VIEWS = path.join(__dirname, '/views');
+const CSS = path.join(__dirname, '/css');
+const JSCRIPT = path.join(__dirname, '/js');
+const FONTS = path.join(__dirname, '/fonts');
+const IMAGES = path.join(__dirname, '/images');
+const PAYMENT_ICON = path.join(__dirname, '/images/payment-icon');
+const PHP = path.join(__dirname, '/php');
+const WEBFONTS = path.join(__dirname, '/webfonts');
 // HTML Table presentation
 var _ = require('lodash');
 var createHTML = require('create-html');
@@ -34,6 +34,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 Object.assign=require('object-assign')
 
+/*
 app.set('views', VIEWS);
 app.set('css', CSS);
 app.set('js', JSCRIPT);
@@ -42,9 +43,9 @@ app.set('images', IMAGES);
 app.set('images/payment-icon', PAYMENT_ICON);
 app.set('php', PHP);
 app.set('webfonts', WEBFONTS);
-
+*/
 app.engine('html', require('ejs').renderFile);
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Using all images, css , javscript
@@ -69,7 +70,7 @@ var mysqlDb = 'sampledb';
 var mysqlString = 'mysql://' + mysqlUser + ':' + mysqlPass + '@' + mysqlHost + ':' + mysqlPort + '/' + mysqlDb;
 console.log(mysqlString);
 
-/* ----------- Route to landing page ----------- */
+
 app.get('/', function (req, res) {
     res.render('index.html', { root : VIEWS });
 });
