@@ -69,8 +69,10 @@ var mysqlDb = 'sampledb';
 var mysqlString = 'mysql://' + mysqlUser + ':' + mysqlPass + '@' + mysqlHost + ':' + mysqlPort + '/' + mysqlDb;
 console.log(mysqlString);
 
-
-
+/* ----------- Route to landing page ----------- */
+app.get('/', function (req, res) {
+    res.render('index.html', { root : VIEWS });
+});
 
 
 
