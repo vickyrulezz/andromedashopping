@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 Object.assign=require('object-assign')
 
-
+/*
 app.set('views', VIEWS);
 app.set('css', CSS);
 app.set('js', JSCRIPT);
@@ -50,6 +50,7 @@ app.set('images', IMAGES);
 app.set('images/payment-icon', PAYMENT_ICON);
 app.set('php', PHP);
 app.set('webfonts', WEBFONTS);
+*/
 
 app.engine('html', require('ejs').renderFile);
 //app.use(express.static(path.join(__dirname, 'public')));
@@ -81,7 +82,6 @@ console.log(mysqlString);
 app.get('/', function (req, res) {
     res.render('index.html', { root : VIEWS });
 });
-
 
 
 
