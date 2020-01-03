@@ -111,7 +111,16 @@ app.get('/api/status/db', function (req, res) {
 app.get('/get_all_products',function(req, res) {
 
 table = "";
-resulthtml ='<html><head><title>Kool App - Andromeda Product Page</title></head><body>{${table}}</body></html>';
+/*resulthtml =`<html>
+                <head>
+                    <title>Kool App - Andromeda Product Page</title>
+                </head>
+                <body>
+                    {${table}}
+                </body>
+            </html>`;
+*/
+resulthtml =`{${table}}`;
 
 let sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
 XXPR.LIST_PRICE,XXSKU.SKU_ATTRIBUTE_VALUE1 SIZE,XXSKU.SKU_ATTRIBUTE_VALUE2 COLOR,XXPR.IN_STOCK from 
@@ -148,12 +157,12 @@ console.log(sql);
                                 </div>
                             </div>
                             <div class="why-text">
-                                <h4>`+ results[i].DESCRIPTION +`</h4><br/>
-                                <h4>`+ results[i].PRODUCT_TYPE +`&emsp;&emsp;`+ results[i].BRAND +`</h4><br/>
-                                <h5>`+ results[i].LONG_DESCRIPTION +`<h5><br/>
-                                <h5> ₹ `+ results[i].LIST_PRICE +`</h5><br/>
-                                <h5>`+ results[i].COLOR +`&emsp;&emsp;`+ results[i].SIZE +`</h5><br/>
-                                <h5>`+ results[i].IN_STOCK +`</h5><br/>
+                                <span>`+ results[i].DESCRIPTION +`</span><br/>
+                                <span>`+ results[i].PRODUCT_TYPE +`&emsp;&emsp;`+ results[i].BRAND +`</span><br/>
+                                <span>`+ results[i].LONG_DESCRIPTION +`<span><br/>
+                                <span> ₹ `+ results[i].LIST_PRICE +`</span><br/>
+                                <span>`+ results[i].COLOR +`&emsp;&emsp;`+ results[i].SIZE +`</span><br/>
+                                <span> In Stock : `+ results[i].IN_STOCK +`</span>
                             </div>
                         </div>
                     </div>
