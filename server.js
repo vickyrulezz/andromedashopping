@@ -111,16 +111,54 @@ app.get('/api/status/db', function (req, res) {
 app.get('/get_all_products',function(req, res) {
 
 table = "";
-/*resulthtml =`<html>
+resulthtml =`<html>
                 <head>
-                    <title>Kool App - Andromeda Product Page</title>
+                    <meta charset="utf-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                
+                    <!-- Mobile Metas -->
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                
+                    <!-- Site Metas -->
+                    <title>KoolApp - Andromeda Shopping Kart</title>
+                    <meta name="keywords" content="">
+                    <meta name="description" content="">
+                    <meta name="author" content="Vivek Saha">
+                
+                    <!-- Site Icons -->
+                    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+                    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+                
+                    <!-- Bootstrap CSS -->
+                    <link rel="stylesheet" href="css/bootstrap.min.css">
+                    <!-- Site CSS -->
+                    <link rel="stylesheet" href="css/style.css">
+                    <!-- Responsive CSS -->
+                    <link rel="stylesheet" href="css/responsive.css">
+                    <!-- Custom CSS -->
+                    <link rel="stylesheet" href="css/custom.css">
                 </head>
                 <body>
                     {${table}}
                 </body>
+                <!-- ALL JS FILES -->
+                <script src="js/jquery-3.2.1.min.js"></script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.min.js"></script>
+                <!-- ALL PLUGINS -->
+                <script src="js/jquery.superslides.min.js"></script>
+                <script src="js/bootstrap-select.js"></script>
+                <script src="js/inewsticker.js"></script>
+                <script src="js/bootsnav.js"></script>
+                <script src="js/images-loded.min.js"></script>
+                <script src="js/isotope.min.js"></script>
+                <script src="js/owl.carousel.min.js"></script>
+                <script src="js/baguetteBox.min.js"></script>
+                <script src="js/form-validator.min.js"></script>
+                <script src="js/contact-form-script.js"></script>
+                <script src="js/custom.js"></script>
             </html>`;
-*/
-resulthtml ='{${table}}';
+//resulthtml ='{${table}}';
 
 let sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
 XXPR.LIST_PRICE,XXSKU.SKU_ATTRIBUTE_VALUE1 SIZE,XXSKU.SKU_ATTRIBUTE_VALUE2 COLOR,XXPR.IN_STOCK from 
