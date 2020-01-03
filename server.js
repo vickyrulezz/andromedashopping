@@ -169,15 +169,21 @@ console.log(sql);
                     `;
         //table +='<tr><td>'+ (i+1) +'</td><td>'+ results[i].PRODUCT_TYPE +'</td><td>'+ results[i].SKU +'</td><td>'+ results[i].BRAND +'</td><td>'+ results[i].DESCRIPTION +'</td><td>'+ results[i].LONG_DESCRIPTION +'</td><td>'+ results[i].LIST_PRICE +'</td><td>'+ results[i].SIZE +'</td><td>'+ results[i].COLOR+'</td><td>'+ results[i].IN_STOCK +'</td></tr>';
 	}
-       table =`<div class="row product-categorie-box">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                            <div class="row">`
-                            + table +
-                        `</div>
+       table =`
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+                    <div class="row product-categorie-box">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                <div class="row">`
+                                    + table +
+                                `</div>
+                            </div>
                         </div>
                     </div>
-                </div>`;
+                </div>
+            </div>
+            `;
 	
 	resulthtml = resulthtml.replace('{${table}}', table);
 	console.log(resulthtml);
