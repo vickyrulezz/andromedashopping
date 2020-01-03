@@ -23,6 +23,7 @@ var json_data = "";
 var table = "";
 var resulthtml ="";
 var searchParam = "";
+var outData = "";
 
 
 console.log("path :"+path);
@@ -111,6 +112,7 @@ app.get('/api/status/db', function (req, res) {
 app.get('/get_all_products',function(req, res) {
 
 table = "";
+outData ='{${table}}';
 resulthtml =`<html>
                 <head>
                     <meta charset="utf-8">
@@ -139,9 +141,8 @@ resulthtml =`<html>
                     <link rel="stylesheet" href="css/custom.css">
                 </head>
                 <body>`
-                    '{${table}}'
-                `
-                <!-- ALL JS FILES -->
+                + outData +
+                `<!-- ALL JS FILES -->
                 <script src="js/jquery-3.2.1.min.js"></script>
                 <script src="js/popper.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>
@@ -161,6 +162,7 @@ resulthtml =`<html>
                 </body>
             </html>`;
 //resulthtml ='{${table}}';
+resulthtml ='<html><head><title>Kool App - Andromeda Product Page</title></head><body>{${table}}</body></html>';
 
 let sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
 XXPR.LIST_PRICE,XXSKU.SKU_ATTRIBUTE_VALUE1 SIZE,XXSKU.SKU_ATTRIBUTE_VALUE2 COLOR,XXPR.IN_STOCK from 
@@ -227,7 +229,8 @@ console.log(sql);
 
             //table ='<table border="1" bgcolor=" #ffffcc"><tr><th>Sr No.</th><th>PRODUCT_TYPE</th><th>SKU</th><th>BRAND</th><th>DESCRIPTION</th><th>LONG_DESCRIPTION</th><th>LIST_PRICE</th><th>SIZE</th><th>COLOR</th><th>IN_STOCK</th></tr>'+ table +'</table>';
 	
-	resulthtml = resulthtml.replace('{${table}}', table);
+    //resulthtml = resulthtml.replace('{${table}}', table);
+    resulthtml = resulthtml.replace(outData, table);
 	console.log(resulthtml);
 	res.send(resulthtml);
   });
