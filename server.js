@@ -11,6 +11,7 @@ const JSCRIPT = path.join(__dirname, '/js');
 const FONTS = path.join(__dirname, '/fonts');
 const IMAGES = path.join(__dirname, '/images');
 const PAYMENT_ICON = path.join(__dirname, '/images/payment-icon');
+const PRODUCT = path.join(__dirname, '/images/product');
 const PHP = path.join(__dirname, '/php');
 const WEBFONTS = path.join(__dirname, '/webfonts');
 // HTML Table presentation
@@ -64,6 +65,7 @@ app.use(express.static(JSCRIPT));
 app.use(express.static(FONTS));
 app.use(express.static(IMAGES));
 app.use(express.static(PAYMENT_ICON));
+app.use(express.static(PRODUCT));
 app.use(express.static(PHP));
 app.use(express.static(WEBFONTS));
 
@@ -191,7 +193,7 @@ console.log(sql);
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                         <div class="products-single fix">
                             <div class="box-img-hover">
-                                <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                                <img src="images/product/`+results[i].SKU+`.jpg" class="img-fluid" alt="Image">
                                 <div class="mask-icon">
                                     <ul>
                                         <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
