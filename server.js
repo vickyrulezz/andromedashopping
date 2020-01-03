@@ -133,9 +133,42 @@ console.log(sql);
     if(err) throw err;
 	
 	for(var i=0; i<results.length; i++){
-        table +='<tr><td>'+ (i+1) +'</td><td>'+ results[i].PRODUCT_TYPE +'</td><td>'+ results[i].SKU +'</td><td>'+ results[i].BRAND +'</td><td>'+ results[i].DESCRIPTION +'</td><td>'+ results[i].LONG_DESCRIPTION +'</td><td>'+ results[i].LIST_PRICE +'</td><td>'+ results[i].SIZE +'</td><td>'+ results[i].COLOR+'</td><td>'+ results[i].IN_STOCK +'</td></tr>';
+        table += `
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <div class="products-single fix">
+                            <div class="box-img-hover">
+                                <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                                <div class="mask-icon">
+                                    <ul>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    </ul>
+                                    <a class="cart" href="#">Add to Cart</a>
+                                </div>
+                            </div>
+                            <div class="why-text">
+                                <h4>`+ results[i].DESCRIPTION +`</h4><br/>
+                                <h4>`+ results[i].PRODUCT_TYPE +`&emsp;&emsp;`+ results[i].BRAND +`</h4><br/>
+                                <h5>`+ results[i].LONG_DESCRIPTION +`<h5><br/>
+                                <h5> ₹ `+ results[i].LIST_PRICE +`</h5><br/>
+                                <h5> ₹ `+ results[i].COLOR +`&emsp;&emsp;`+ results[i].SIZE +`</h5><br/>
+                                <h5> ₹ `+ results[i].IN_STOCK +`</h5><br/>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+        //table +='<tr><td>'+ (i+1) +'</td><td>'+ results[i].PRODUCT_TYPE +'</td><td>'+ results[i].SKU +'</td><td>'+ results[i].BRAND +'</td><td>'+ results[i].DESCRIPTION +'</td><td>'+ results[i].LONG_DESCRIPTION +'</td><td>'+ results[i].LIST_PRICE +'</td><td>'+ results[i].SIZE +'</td><td>'+ results[i].COLOR+'</td><td>'+ results[i].IN_STOCK +'</td></tr>';
 	}
-        table ='<table border="1" bgcolor=" #ffffcc"><tr><th>Sr No.</th><th>PRODUCT_TYPE</th><th>SKU</th><th>BRAND</th><th>DESCRIPTION</th><th>LONG_DESCRIPTION</th><th>LIST_PRICE</th><th>SIZE</th><th>COLOR</th><th>IN_STOCK</th></tr>'+ table +'</table>';
+       table =`<div class="row product-categorie-box">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                            <div class="row">`
+                            + table +
+                        `</div>
+                        </div>
+                    </div>
+                </div>`;
 	
 	resulthtml = resulthtml.replace('{${table}}', table);
 	console.log(resulthtml);
