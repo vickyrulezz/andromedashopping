@@ -152,8 +152,8 @@ console.log(sql);
                                 <h4>`+ results[i].PRODUCT_TYPE +`&emsp;&emsp;`+ results[i].BRAND +`</h4><br/>
                                 <h5>`+ results[i].LONG_DESCRIPTION +`<h5><br/>
                                 <h5> ₹ `+ results[i].LIST_PRICE +`</h5><br/>
-                                <h5> ₹ `+ results[i].COLOR +`&emsp;&emsp;`+ results[i].SIZE +`</h5><br/>
-                                <h5> ₹ `+ results[i].IN_STOCK +`</h5><br/>
+                                <h5>`+ results[i].COLOR +`&emsp;&emsp;`+ results[i].SIZE +`</h5><br/>
+                                <h5>`+ results[i].IN_STOCK +`</h5><br/>
                             </div>
                         </div>
                     </div>
