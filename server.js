@@ -138,9 +138,9 @@ resulthtml =`<html>
                     <!-- Custom CSS -->
                     <link rel="stylesheet" href="css/custom.css">
                 </head>
-                <body>
-                    {${table}}
-                </body>
+                <body>`
+                    '{${table}}'
+                `
                 <!-- ALL JS FILES -->
                 <script src="js/jquery-3.2.1.min.js"></script>
                 <script src="js/popper.min.js"></script>
@@ -157,6 +157,8 @@ resulthtml =`<html>
                 <script src="js/form-validator.min.js"></script>
                 <script src="js/contact-form-script.js"></script>
                 <script src="js/custom.js"></script>
+
+                </body>
             </html>`;
 //resulthtml ='{${table}}';
 
