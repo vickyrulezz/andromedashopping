@@ -92,8 +92,6 @@ app.get('/', function (req, res) {
 app.get("/getallproducts", function (req, res) {
     res.sendFile('allproducts.html', { root : VIEWS });
     searchParam = req.query.txtSearch;
-    //brandFilter = req.query.survey;
-    //genderFilter = req.query.
   });
 
  /* DATABASE operations */
@@ -187,8 +185,8 @@ AND (upper(XXSKU.ITEM_NUMBER) like upper('%`+searchParam+`%')
 OR upper(XXPC.COMMODITY_NAME) like upper('%`+searchParam+`%') 
 OR upper(XXSKU.DESCRIPTION) like upper('%`+searchParam+`%') 
 OR upper(XXSKU.LONG_DESCRIPTION) like upper('%`+searchParam+`%')
-OR upper(XXSKU.COLOR) like upper('%`+searchParam+`%')
-OR upper(XXSKU.SIZE) like upper('%`+searchParam+`%')
+OR upper(XXSKU.SKU_ATTRIBUTE_VALUE2) like upper('%`+searchParam+`%')
+OR upper(XXSKU.SKU_ATTRIBUTE_VALUE1) like upper('%`+searchParam+`%')
 )`;
     
 console.log(sql);
