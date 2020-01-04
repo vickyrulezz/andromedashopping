@@ -448,7 +448,7 @@ app.get('/get_products_listview',function(req, res) {
                                             <a class="cart" href="#">Add to Cart</a>
                                         </div>
                                     </div>
-                                    <div class="why-text">
+                                    <div class="why-text full-width">
                                         <span>`+ results[i].DESCRIPTION +`</span><br/>
                                         <span>`+ results[i].PRODUCT_TYPE +`&emsp;&emsp;`+ results[i].BRAND +`</span><br/>
                                         <span>`+ results[i].LONG_DESCRIPTION +`<span><br/>
