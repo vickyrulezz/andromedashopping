@@ -25,6 +25,9 @@ var table = "";
 var resulthtml ="";
 var searchParam = "";
 var outData = "";
+var brandFilter = "";
+var colorFilter = "";
+var genderFilter = "";
 
 
 console.log("path :"+path);
@@ -89,6 +92,8 @@ app.get('/', function (req, res) {
 app.get("/getallproducts", function (req, res) {
     res.sendFile('allproducts.html', { root : VIEWS });
     searchParam = req.query.txtSearch;
+    //brandFilter = req.query.survey;
+    //genderFilter = req.query.
   });
 
  /* DATABASE operations */
@@ -182,6 +187,8 @@ AND (upper(XXSKU.ITEM_NUMBER) like upper('%`+searchParam+`%')
 OR upper(XXPC.COMMODITY_NAME) like upper('%`+searchParam+`%') 
 OR upper(XXSKU.DESCRIPTION) like upper('%`+searchParam+`%') 
 OR upper(XXSKU.LONG_DESCRIPTION) like upper('%`+searchParam+`%')
+OR upper(XXSKU.COLOR) like upper('%`+searchParam+`%')
+OR upper(XXSKU.SIZE) like upper('%`+searchParam+`%')
 )`;
     
 console.log(sql);
@@ -426,39 +433,37 @@ app.get('/get_products_listview',function(req, res) {
         
         for(var i=0; i<results.length; i++){
             table += `
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                            <div class="products-single fix">
-                                <div class="box-img-hover">
-                                    <img src="images/product/`+results[i].SKU+`.jpg" class="img-fluid" alt="Image">
-                                    <div class="mask-icon">
-                                        <ul>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                        </ul>
-                                        <a class="cart" href="#">Add to Cart</a>
+                    <div class="list-view-box">
+                        <div class="row">  
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                <div class="products-single fix">
+                                    <div class="box-img-hover">
+                                        <img src="images/product/`+results[i].SKU+`.jpg" class="img-fluid" alt="Image">
+                                        <div class="mask-icon">
+                                            <ul>
+                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                            </ul>
+                                            <a class="cart" href="#">Add to Cart</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="why-text">
-                                    <span>`+ results[i].DESCRIPTION +`</span><br/>
-                                    <span>`+ results[i].PRODUCT_TYPE +`&emsp;&emsp;`+ results[i].BRAND +`</span><br/>
-                                    <span>`+ results[i].LONG_DESCRIPTION +`<span><br/>
-                                    <span> ₹ `+ results[i].LIST_PRICE +`</span><br/>
-                                    <span>`+ results[i].COLOR +`&emsp;&emsp;`+ results[i].SIZE +`</span><br/>
-                                    <span> In Stock : `+ results[i].IN_STOCK +`</span>
+                                    <div class="why-text">
+                                        <span>`+ results[i].DESCRIPTION +`</span><br/>
+                                        <span>`+ results[i].PRODUCT_TYPE +`&emsp;&emsp;`+ results[i].BRAND +`</span><br/>
+                                        <span>`+ results[i].LONG_DESCRIPTION +`<span><br/>
+                                        <span> ₹ `+ results[i].LIST_PRICE +`</span><br/>
+                                        <span>`+ results[i].COLOR +`&emsp;&emsp;`+ results[i].SIZE +`</span><br/>
+                                        <span> In Stock : `+ results[i].IN_STOCK +`</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                         `;
             //table +='<tr><td>'+ (i+1) +'</td><td>'+ results[i].PRODUCT_TYPE +'</td><td>'+ results[i].SKU +'</td><td>'+ results[i].BRAND +'</td><td>'+ results[i].DESCRIPTION +'</td><td>'+ results[i].LONG_DESCRIPTION +'</td><td>'+ results[i].LIST_PRICE +'</td><td>'+ results[i].SIZE +'</td><td>'+ results[i].COLOR+'</td><td>'+ results[i].IN_STOCK +'</td></tr>';
         }
-           table =`
-                                <div class="list-view-box">
-                                    <div class="row">`
-                                        + table +
-                                    `</div>
-                                </div>
-                `;
+           //table = table `;
         
         //resulthtml = resulthtml.replace('{${table}}', table);
         resulthtml = resulthtml.replace('OutputData', table);
