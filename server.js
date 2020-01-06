@@ -84,11 +84,8 @@ app.get('/', function (req, res) {
 app.get("/getallproducts", function (req, res) {
     res.sendFile('allproducts.html', { root : VIEWS });
     searchParam = req.query.txtSearch;
-    filterMen = req.query.filterMen;
-    filterWomen = req.query.filterWomen;
-    if(filterWomen == "Women")
-        filterParam = "Women";
-
+    filterMen = req.query.valueMen;
+    filterWomen = req.query.valueWomen;
   });
 
  /* DATABASE operations */
@@ -574,6 +571,7 @@ app.get('/get_filtered_products',function(req, res) {
     //resulthtml ='{${table}}';
     //resulthtml ='<html><head><title>Kool App - Andromeda Product Page</title></head><body>{${table}}</body></html>';
     var sql = "";
+    console.log("men : "+filterMen);
 
     if (filterMen == "Men")
     {
