@@ -70,7 +70,7 @@ var mysqlPort = process.env.OPENSHIFT_MYSQL_DB_PORT || 3306;
 var mysqlUser = 'xxuser'; 
 var mysqlPass = 'welcome1';
 var mysqlDb = 'sampledb';
-
+var sql = "";
 
 //form the connection string to connect to mysql - you can connect directly too 
 var mysqlString = 'mysql://' + mysqlUser + ':' + mysqlPass + '@' + mysqlHost + ':' + mysqlPort + '/' + mysqlDb;
@@ -84,8 +84,6 @@ app.get('/', function (req, res) {
 app.get("/getallproducts", function (req, res) {
     res.sendFile('allproducts.html', { root : VIEWS });
     searchParam = req.query.txtSearch;
-    filterMen = req.query.valueMen;
-    filterWomen = req.query.valueWomen;
   });
 
  /* DATABASE operations */
@@ -166,7 +164,7 @@ resulthtml =`<html>
 //resulthtml ='{${table}}';
 //resulthtml ='<html><head><title>Kool App - Andromeda Product Page</title></head><body>{${table}}</body></html>';
 
-let sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
+sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
 XXPR.LIST_PRICE,XXSKU.SKU_ATTRIBUTE_VALUE1 SIZE,XXSKU.SKU_ATTRIBUTE_VALUE2 COLOR,XXPR.IN_STOCK from 
 XXIBM_PRODUCT_SKU XXSKU,
 XXIBM_PRODUCT_PRICING XXPR,
@@ -322,7 +320,7 @@ app.get('/get_products_gridview',function(req, res) {
     //resulthtml ='{${table}}';
     //resulthtml ='<html><head><title>Kool App - Andromeda Product Page</title></head><body>{${table}}</body></html>';
     
-    let sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
+    sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
     XXPR.LIST_PRICE,XXSKU.SKU_ATTRIBUTE_VALUE1 SIZE,XXSKU.SKU_ATTRIBUTE_VALUE2 COLOR,XXPR.IN_STOCK from 
     XXIBM_PRODUCT_SKU XXSKU,
     XXIBM_PRODUCT_PRICING XXPR,
@@ -457,7 +455,7 @@ app.get('/get_products_listview',function(req, res) {
                     </body>
                 </html>`;
     
-    let sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
+    sql = `select XXPC.COMMODITY_NAME PRODUCT_TYPE, XXSKU.ITEM_NUMBER SKU, XXPS.BRAND ,XXSKU.DESCRIPTION,XXSKU.LONG_DESCRIPTION, 
     XXPR.LIST_PRICE,XXSKU.SKU_ATTRIBUTE_VALUE1 SIZE,XXSKU.SKU_ATTRIBUTE_VALUE2 COLOR,XXPR.IN_STOCK from 
     XXIBM_PRODUCT_SKU XXSKU,
     XXIBM_PRODUCT_PRICING XXPR,
@@ -515,6 +513,12 @@ app.get('/get_products_listview',function(req, res) {
 //GET ALL PRODUCTS - To retrieve all all products call this API ... URL/get_all_products
 app.get('/get_filtered_products',function(req, res) {
 
+    filterMen = req.query.valueMen;
+    filterWomen = req.query.valueWomen;
+
+    console.log("filterMen : "+filterMen);
+    console.log("filterWomen : "+filterWomen);
+
     table = "";
     //outData ='{${table}}';
     outData = "OutputData";
@@ -569,9 +573,7 @@ app.get('/get_filtered_products',function(req, res) {
                     </body>
                 </html>`;
     //resulthtml ='{${table}}';
-    //resulthtml ='<html><head><title>Kool App - Andromeda Product Page</title></head><body>{${table}}</body></html>';
-    var sql = "";
-    console.log("men : "+filterMen);
+    //resulthtml ='<html><head><title>Kool App - Andromeda Product Page</title></head><body>{${table}}</body></html>';   
 
     if (filterMen == "Men")
     {
