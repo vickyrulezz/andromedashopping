@@ -510,12 +510,10 @@ app.get('/get_products_listview',function(req, res) {
         
         //resulthtml = resulthtml.replace('{${table}}', table);
         resulthtml = resulthtml.replace('OutputData', table);
-        console.log(resulthtml);
+        //console.log(resulthtml);
         res.send(resulthtml);
       });
     });
-
-
 
 //GET ALL PRODUCTS - To retrieve all all products call this API ... URL/get_all_products
 app.get('/get_filtered_products',function(req, res) {
