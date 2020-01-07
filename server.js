@@ -653,6 +653,7 @@ app.get('/get_men_products',function(req, res) {
            }
     
        resulthtml = resulthtml.replace('OutputData', table);
+       res.render('filteredData.hbs',{filteredData: table}); // Change
        //res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
         //res.send(resulthtml);
       });
@@ -810,7 +811,7 @@ app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
 app.get('/get_products',function(req, res,next) {
-    res.render('filteredData.hbs',{filteredData: 'Hello World !'}); // Change
+    res.render('filteredData.hbs',{filteredData: table}); // Change
 });
 
 
