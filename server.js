@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var router = express.Router();
 var bodyParser = require('body-parser');
 var mysql = require("mysql");
 const http = require('http');
@@ -656,7 +657,7 @@ app.get('/get_men_products',function(req, res) {
            }
     
        resulthtml = resulthtml.replace('OutputData', table);
-       res.render('filteredData.html',{filteredData: table});
+       res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
         //res.send(resulthtml);
       });
     });
@@ -813,3 +814,4 @@ app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
 module.exports = app ;
+//module.exports = router ;
