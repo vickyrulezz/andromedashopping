@@ -804,6 +804,10 @@ app.get('/get_women_products',function(req, res) {
       });
     });
     
+var hbs = require('hbs');
+app.set('view engine', 'hbs');
+app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
 
 app.get('/get_products',function(req, res,next) {
     res.render('filteredData.hbs',{filteredData: 'Hello World !'}); // Change
