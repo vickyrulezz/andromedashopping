@@ -656,7 +656,8 @@ app.get('/get_men_products',function(req, res) {
            }
     
        resulthtml = resulthtml.replace('OutputData', table);
-        res.send(resulthtml);
+       res.render('filteredData.html',{filteredData: table});
+        //res.send(resulthtml);
       });
     });
 
