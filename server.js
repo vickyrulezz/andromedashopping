@@ -512,7 +512,7 @@ app.get('/get_products_listview',function(req, res) {
     });
 
 //GET ALL PRODUCTS - To retrieve all men products call this API ...
-app.get('/get_men_products1',function(req, res) {
+app.get('/get_men_products',function(req, res) {
 
     //filterMen = req.query.valueMen;
     //filterWomen = req.query.valueWomen;
@@ -657,7 +657,7 @@ app.get('/get_men_products1',function(req, res) {
            }
     
        resulthtml = resulthtml.replace('OutputData', table);
-       res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
+       //res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
         //res.send(resulthtml);
       });
     });
@@ -809,7 +809,7 @@ app.get('/get_women_products',function(req, res) {
     });
     
 
-router.get('/get_men_products',function(req, res,next) {
+router.get('/get_products',function(req, res,next) {
     res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
 });
 
