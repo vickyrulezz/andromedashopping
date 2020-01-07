@@ -45,13 +45,10 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 
 // Using JSON
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 
 Object.assign=require('object-assign')
-
-app.engine('html', require('ejs').renderFile);
 //app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Using all images, css , javscript
 app.use(express.static(VIEWS));
@@ -809,7 +806,7 @@ app.get('/get_women_products',function(req, res) {
     
 
 app.get('/get_products',function(req, res,next) {
-    res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
+    res.render('filteredData.hbs',{filteredData: 'Hello World !'}); // Change
 });
 
 
