@@ -549,14 +549,9 @@ app.get('/get_men_products',function(req, res) {
                         <link rel="stylesheet" href="css/custom.css">
                     </head>
                     <body>
-                    <div class="row product-categorie-box">
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                     `
                     + outData +
                     `
-                    </div>
-                    
                     <!-- ALL JS FILES -->
                     <script src="js/jquery-3.2.1.min.js"></script>
                     <script src="js/popper.min.js"></script>
