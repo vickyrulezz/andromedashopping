@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var hbs = require('hbs');
 var bodyParser = require('body-parser');
 var mysql = require("mysql");
 const http = require('http');
@@ -46,6 +47,10 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 // Using JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.set('view engine', 'hbs');
+app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
 
 Object.assign=require('object-assign')
 //app.use(express.static(path.join(__dirname, 'public')));
@@ -653,9 +658,9 @@ app.get('/get_men_products',function(req, res) {
            }
     
        resulthtml = resulthtml.replace('OutputData', table);
-       res.render('filteredData.hbs',{filteredData: table}); // Change
+       //res.render('filteredData.hbs',{filteredData: table}); // Change
        //res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
-        //res.send(resulthtml);
+        res.send(resulthtml);
       });
     });
 
@@ -804,16 +809,6 @@ app.get('/get_women_products',function(req, res) {
         res.send(resulthtml);
       });
     });
-    
-var hbs = require('hbs');
-app.set('view engine', 'hbs');
-app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
-
-app.get('/get_products',function(req, res,next) {
-    res.render('filteredData.hbs',{filteredData: table}); // Change
-});
-
 
 
 // Port Listen
