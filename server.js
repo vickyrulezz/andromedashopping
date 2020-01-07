@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var router = express.Router();
 var bodyParser = require('body-parser');
 var mysql = require("mysql");
 const http = require('http');
@@ -809,13 +808,14 @@ app.get('/get_women_products',function(req, res) {
     });
     
 
-router.get('/get_products',function(req, res,next) {
+app.get('/get_products',function(req, res,next) {
     res.render('filteredData.html',{filteredData: 'Hello World !'}); // Change
 });
+
+
 
 // Port Listen
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
 module.exports = app ;
-module.exports = router ;
