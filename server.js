@@ -812,7 +812,7 @@ app.get('/get_women_products',function(req, res) {
 
 
 
-app.prependOnceListener("/filterbybrand", function (req, res) {
+app.post("/filterbybrand", function (req, res) {
         brandFilter = req.body.survey;
         sortParam = req.body.optSort;
         optSortValue1 = req.body.opt1;
