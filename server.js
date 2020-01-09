@@ -811,15 +811,6 @@ app.get('/get_women_products',function(req, res) {
     });
 
 
-
-app.post("/filterbybrand", function (req, res) {
-        brandFilter = req.body.survey;
-        sortParam = req.body.optSort;
-        optSortValue1 = req.body.opt1;
-        console.log(brandFilter+'---'+sortParam+'---'+optSortValue1);
-        
-
-      });
 // Port Listen
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
