@@ -30,8 +30,8 @@ var filterParam = "";
 var filterMen = "";
 var filterWomen = "";
 var brandFilter = "";
-var colorFilter = "";
-var genderFilter = "";
+var optSortValue1 = "";
+var sortParam = "";
 
 
 console.log("path :"+path);
@@ -46,7 +46,7 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 
 // Using JSON
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'hbs');
 app.set('view engine', 'html');
@@ -811,6 +811,15 @@ app.get('/get_women_products',function(req, res) {
     });
 
 
+
+app.prependOnceListener("/filterbybrand", function (req, res) {
+        brandFilter = req.body.survey;
+        sortParam = req.body.optSort;
+        optSortValue1 = req.body.opt1;
+        console.log(brandFilter+'---'+sortParam+'---'+optSortValue1);
+        
+
+      });
 // Port Listen
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
